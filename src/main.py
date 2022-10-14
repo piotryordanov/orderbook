@@ -49,13 +49,11 @@ def do_orderbook_to_purchase_amount(df, amount=10):
 
 def calculate_average_price(df):
     def fn(group):
-        group['weighted_avg'] = group['price'] * group['size'] / group['size'].sum()
+        group['average_price'] = group['price'] * group['size'] / group['size'].sum()
         return group
-    d_agg = {'exchange':'first'
-    ,'weighted_avg':'sum'
-    ,'size':'sum'
-    ,'price':'sum'}
-    return df.groupby('exchange', group_keys=False, sort=False).apply(fn).groupby('exchange').agg(d_agg)
+    d_agg = {'average_price':'sum' ,'size':'sum'}
+    df = df.groupby('exchange', group_keys=False, sort=False).apply(fn).groupby('exchange').agg(d_agg)
+    return df
 
 
 def run(col):

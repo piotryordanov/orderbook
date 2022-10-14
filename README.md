@@ -101,3 +101,4 @@ gemini      gemini  19603.130003  0.258954   39206.31
 + Adding kraken would have been similar to the rest:
   + Fetch the data. Align the data columns to `price, size, exchange`, then concat.
   + For 3+ exchanges, I'd have added some more automation to concat. (Currently it's manual)
++ The `main.py` file is mostly a bunch of functions. They can all be easily moved to their own files. As I said in the call, I'm a big fan of functional programming vs classes. If i was on js/ts, I'd have piped things using `ramda` for example.
